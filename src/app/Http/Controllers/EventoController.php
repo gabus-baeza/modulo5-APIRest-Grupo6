@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Evento;
 use Illuminate\Http\Request;
+// Agregar la clase Validator para validar los datos de la petición
+use Illuminate\Support\Facades\Validator;
 
 class EventoController extends Controller
 {
@@ -12,7 +14,15 @@ class EventoController extends Controller
      */
     public function index()
     {
-        //
+         // Recuperar todos los recursos
+        $eventos = Evento::all();
+
+        $respuesta = [
+            'eventos' => $eventos,
+            'status' => 200,
+        ];
+
+        return response()->json($respuesta);
     }
 
     /**
